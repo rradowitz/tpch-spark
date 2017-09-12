@@ -78,7 +78,7 @@ object TpchQuery {
     } 
      
     // Create Spark session
-    val spark = SparkSession.builder().appName("TPC-H on Native Spark Session").enableHiveSupport().getOrCreate() 
+    val spark = SparkSession.builder().appName("TPC-H on SparkScala Session: "+queryNum).enableHiveSupport().getOrCreate() 
     //spark.sql("use "+db)
     spark.catalog.setCurrentDatabase(db)
     
@@ -88,6 +88,7 @@ object TpchQuery {
     // Set filter
     if (filter == 1) {
       spark.conf.set("spark.sql.orc.filterPushdown", "true")
+      spark.conf.set("spark.sql.parquet.filterPushdown", "true")
       println("FilterPushDown --> ON")
     }    
 

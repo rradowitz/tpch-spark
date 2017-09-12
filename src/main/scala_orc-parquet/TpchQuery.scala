@@ -80,7 +80,7 @@ object TpchQuery {
     } 
      
     // Create Spark session
-    val spark = SparkSession.builder().appName("TPC-H on Native Spark Session").getOrCreate() 
+    val spark = SparkSession.builder().appName("TPC-H on SparkScala Session: "+queryNum).getOrCreate() 
     val error = ">>Unsopported Format!<<"
 
     // Read generated data from HDFS
